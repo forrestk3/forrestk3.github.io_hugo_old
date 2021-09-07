@@ -191,15 +191,15 @@ theme = "DoIt"
     [params.home.profile]
       enable = true
       # Gravatar 邮箱，用于优先在主页显示的头像
-      gravatarEmail = ""
+      gravatarEmail = "hb_688@163.com"
       # 主页显示头像的 URL
       # 将你的头像文件放置于 static 或者 assets 目录下
       # 文件路径是相对于 static 或者 assets 目录的
-      avatarURL = "/images/avatar.png"
+      avatarURL = "/images/avatar.jpge"
       #  主页显示的网站标题 (支持 HTML 格式)
       title = ""
       # 主页显示的网站副标题
-      subtitle = "来日方长，何惧车遥马慢"
+      subtitle = "Now or Never"
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号
