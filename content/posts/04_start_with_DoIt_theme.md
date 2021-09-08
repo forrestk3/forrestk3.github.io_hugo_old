@@ -1,33 +1,90 @@
-baseURL = "http://wlchengg.github.io/"
-# [en, zh-cn, fr, ...] 设置默认的语言
-defaultContentLanguage = "zh-cn"
-# 网站语言, 仅在这里 CN 大写
-languageCode = "zh-CN"
-# 是否包括中日韩文字
-hasCJKLanguage = true
-# 网站标题
-title = "咸蛋超人的博客"
+---
+title: "04_start_with_DoIt_theme"
+date: 2021-09-08T00:00:00+08:00
+draft: false
+---
 
-# 更改使用 Hugo 构建网站时使用的默认主题
+<style>
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+</style>
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- <span class="section-num">1</span> [创建项目](#创建项目):blog:
+    - <span class="section-num">1.1</span> [创建新项目](#创建新项目)
+    - <span class="section-num">1.2</span> [安装主题](#安装主题)
+    - <span class="section-num">1.3</span> [主题配置](#主题配置)
+    - <span class="section-num">1.4</span> [创建文章](#创建文章)
+    - <span class="section-num">1.5</span> [启动网站](#启动网站)
+        - <span class="section-num">1.5.1</span> [](#)
+        - <span class="section-num">1.5.2</span> [](#)
+        - <span class="section-num">1.5.3</span> [](#)
+        - <span class="section-num">1.5.4</span> [](#)
+        - <span class="section-num">1.5.5</span> [构建网站](#构建网站)
+- <span class="section-num">2</span> [配置](#配置)
+    - <span class="section-num">2.1</span> [头像配置](#头像配置)
+
+</div>
+<!--endtoc-->
+
+
+
+## <span class="section-num">1</span> 创建项目 {#创建项目}
+
+
+### <span class="section-num">1.1</span> 创建新项目 {#创建新项目}
+
+```shell
+hugo new site my_website
+cd my_website
+```
+
+
+### <span class="section-num">1.2</span> 安装主题 {#安装主题}
+
+```shell
+git clone https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt
+```
+
+这时会在./my<sub>website</sub>/themes/文件夹下创建DoIt文件夹
+
+
+### <span class="section-num">1.3</span> 主题配置 {#主题配置}
+
+将该配置复制到根目录的config.toml文件中
+
+```nil
+baseURL = "http://example.org/"
+# [en, zh-cn, fr, ...] determines default content language
+defaultContentLanguage = "en"
+# language code
+languageCode = "en"
+title = "My New Hugo Site"
+
+# Change the default theme to be use when building the site with Hugo
 theme = "DoIt"
 
 [menu]
-  [[menu.main]] 
+  [[menu.main]]
     identifier = "posts"
-    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
+    # you can add extra information before the name (HTML format is supported), such as icons
     pre = ""
-    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
+    # you can add extra information after the name (HTML format is supported), such as icons
     post = ""
-    name = "文章"
+    name = "Posts"
     url = "/posts/"
-    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
+    # title will be shown when you hover on this menu link
     title = ""
     weight = 1
   [[menu.main]]
     identifier = "tags"
     pre = ""
     post = ""
-    name = "标签"
+    name = "Tags"
     url = "/tags/"
     title = ""
     weight = 2
@@ -35,38 +92,24 @@ theme = "DoIt"
     identifier = "categories"
     pre = ""
     post = ""
-    name = "分类"
+    name = "Categories"
     url = "/categories/"
     title = ""
     weight = 3
-  [[menu.main]]
-    identifier = "luoyeji"
-    pre = "<i class='fab fa-canadian-maple-leaf' style='color:#F4606C;'></i>"
-    post = ""
-    name = "落叶集"
-    url = "https://wlchengg.github.io/luoyeji/"
-    title = "我的碎碎念"
-    weight = 4
-  [[menu.main]]
-    identifier = "garss"
-    pre = "<i class='fas fa-globe-asia' style='duotone;color:#004F7C'></i>"
-    post = ""
-    name = "RSS汇"
-    url = "https://wlchengg.github.io/garss/"
-    title = "来自世界的声音"
-    weight = 5
+
+
 
 
 [params]
-  #  LoveIt 主题版本
+  #  DoIt 主题版本
   version = "0.2.X"
   # 网站描述
-  description = "贵有恒"
+  description = "这是我的全新 Hugo 网站"
   # 网站关键词
   keywords = ["Theme", "Hugo"]
-  # 网站默认主题样式 ("light", "dark", "auto")
+  #  网站默认主题样式 ("light", "dark", "black", "auto")
   defaultTheme = "auto"
-  # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
+  # 公共 git 仓库路径, 仅在 enableGitInfo 设为 true 时有效
   gitRepo = ""
   #  哪种哈希函数用来 SRI, 为空时表示不使用 SRI
   # ("sha256", "sha384", "sha512", "md5")
@@ -76,7 +119,7 @@ theme = "DoIt"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["/logo.png"]
   #  开启PWA支持
-
+  enablePWA = false
   #  应用图标配置
   [params.app]
     # 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
@@ -85,8 +128,6 @@ theme = "DoIt"
     noFavicon = false
     # 更现代的 SVG 网站图标, 可替代旧的 .png 和 .ico 文件
     svgFavicon = ""
-    # Android 浏览器主题色
-    themeColor = "#ffffff"
     # Safari 图标颜色
     iconColor = "#5bbad5"
     # Windows v8-10磁贴颜色
@@ -123,7 +164,7 @@ theme = "DoIt"
       distance = 100
       ignoreLocation = false
       useExtendedSearch = false
-      ignoreFieldNorm = false      
+      ignoreFieldNorm = false
 
   # 页面头部导航栏配置
   [params.header]
@@ -131,7 +172,7 @@ theme = "DoIt"
     desktopMode = "fixed"
     # 移动端导航栏模式 ("fixed", "normal", "auto")
     mobileMode = "auto"
-    # DoIt 新增 | 0.2.11 主题切换模式
+    #  主题切换模式
     # 主题切换模式 ("switch", "select")
     themeChangeMode = "select"
     #  页面头部导航栏标题配置
@@ -139,7 +180,7 @@ theme = "DoIt"
       # LOGO 的 URL
       logo = ""
       # 标题名称
-      name = "SuperEgg's blog"
+      name = ""
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = ""
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
@@ -160,7 +201,7 @@ theme = "DoIt"
     author = true
     # 网站创立年份
     since = 2019
-    # ICP 备案信息，仅在中国使用 (支持 HTML 格式)
+    # ICP 备案信息, 仅在中国使用 (支持 HTML 格式)
     icp = ""
     # 许可协议信息 (支持 HTML 格式)
     license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
@@ -190,16 +231,16 @@ theme = "DoIt"
     # 主页个人信息
     [params.home.profile]
       enable = true
-      # Gravatar 邮箱，用于优先在主页显示的头像
-      # gravatarEmail = "hb_688@163.com"
+      # Gravatar 邮箱, 用于优先在主页显示的头像
+      gravatarEmail = ""
       # 主页显示头像的 URL
       # 将你的头像文件放置于 static 或者 assets 目录下
       # 文件路径是相对于 static 或者 assets 目录的
-      avatarURL = "/images/avatar.jpge"
+      avatarURL = "/images/avatar.webp"
       #  主页显示的网站标题 (支持 HTML 格式)
       title = ""
       # 主页显示的网站副标题
-      subtitle = "Now or Never"
+      subtitle = "这是我的全新 Hugo 网站"
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号
@@ -217,12 +258,12 @@ theme = "DoIt"
 
   # 作者的社交信息设置
   [params.social]
-    GitHub = "wlchenGG"
+    GitHub = "xxxx"
     Linkedin = ""
-    Twitter = ""
-    Instagram = ""
-    Facebook = ""
-    Telegram = ""
+    Twitter = "xxxx"
+    Instagram = "xxxx"
+    Facebook = "xxxx"
+    Telegram = "xxxx"
     Medium = ""
     Gitlab = ""
     Youtubelegacy = ""
@@ -282,8 +323,8 @@ theme = "DoIt"
     ORCID = ""
     Liberapay = ""
     Ko-Fi = ""
-    Email = "wlcheng12@outlook.com"
-    RSS = true # DoIt 新增 | 0.2.0
+    Email = "xxxx@xxxx.com"
+    RSS = true #
 
   #  文章页面配置
   [params.page]
@@ -305,7 +346,7 @@ theme = "DoIt"
     linkToMarkdown = true
     #  是否在 RSS 中显示全文内容
     rssFullText = false
-    # DoIt 新增 | 0.2.11 页面样式 ("normal", "wide")
+    #  页面样式 ("normal", "wide")
     pageStyle = "normal"
     #  目录配置
     [params.page.toc]
@@ -385,13 +426,13 @@ theme = "DoIt"
       enable = true
       # Disqus 评论系统设置
       [params.page.comment.disqus]
-        # 
+        #
         enable = false
-        # Disqus 的 shortname，用来在文章中启用 Disqus 评论系统
+        # Disqus 的 shortname, 用来在文章中启用 Disqus 评论系统
         shortname = ""
       # Gitalk 评论系统设置
       [params.page.comment.gitalk]
-        # 
+        #
         enable = false
         owner = ""
         repo = ""
@@ -414,13 +455,13 @@ theme = "DoIt"
         serverURLs = ""
         #  emoji 数据文件名称, 默认是 "google.yml"
         # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
-        # 位于 "themes/LoveIt/assets/data/emoji/" 目录
+        # 位于 "themes/DoIt/assets/data/emoji/" 目录
         # 可以在你的项目下相同路径存放你自己的数据文件:
         # "assets/data/emoji/"
         emoji = ""
       # Waline 评论系统设置
       [params.page.comment.waline]
-        # DoIt 新增 | 0.2.11
+        #
         enable = false
         serverURL = ""
         placeholder = "Just Go Go."
@@ -454,6 +495,7 @@ theme = "DoIt"
         colorful = true
         dislikes = false
         outlined = false
+        dark = false
       #  Commento 评论系统设置
       [params.page.comment.commento]
         enable = false
@@ -466,14 +508,14 @@ theme = "DoIt"
         label = ""
         lightTheme = "github-light"
         darkTheme = "github-dark"
-      # DoIt 新增 | 0.2.12 Twikoo 评论系统设置
+      #  Twikoo 评论系统设置
       [params.page.comment.twikoo]
         enable = false
         envId = ""
         region = ""
         path = ""
         visitor = true
-      # DoIt 新增 | 0.2.12 Vssue 评论系统设置
+      #  Vssue 评论系统设置
       [params.page.comment.vssue]
         enable = false
         platform = "" # ("bitbucket", "gitea", "gitee", "github", "gitlab")
@@ -513,7 +555,7 @@ theme = "DoIt"
     # 打字结束之后光标的持续时间 (单位是毫秒, "-1" 代表无限大)
     duration = -1
 
-  # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
+  # 网站验证代码, 用于 Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
     google = ""
     bing = ""
@@ -544,7 +586,7 @@ theme = "DoIt"
 
   #  Cookie 许可配置
   [params.cookieconsent]
-    enable = false
+    enable = true
     # 用于 Cookie 许可横幅的文本字符串
     [params.cookieconsent.content]
       message = ""
@@ -555,7 +597,7 @@ theme = "DoIt"
   [params.cdn]
     # CDN 数据文件名称, 默认不启用
     # ("jsdelivr.yml")
-    # 位于 "themes/LoveIt/assets/data/cdn/" 目录
+    # 位于 "themes/DoIt/assets/data/cdn/" 目录
     # 可以在你的项目下相同路径存放你自己的数据文件:
     # "assets/data/cdn/"
     data = ""
@@ -598,9 +640,9 @@ theme = "DoIt"
 
 # 作者配置
 [author]
-  name = "EggGump"
-  email = "wlcheng12@outlook.com"
-  link = "https://github.com/wlchengg"
+  name = "xxxx"
+  email = ""
+  link = ""
 
 # 网站地图配置
 [sitemap]
@@ -636,7 +678,7 @@ theme = "DoIt"
 
 # 用于 Hugo 输出文档的设置
 [outputs]
-  # 
+  #
   home = ["HTML", "RSS", "JSON"]
   page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
@@ -649,3 +691,77 @@ author = "authors"
 category = "categories"
 tag = "tags"
 series = "series"
+
+
+
+
+```
+
+
+### <span class="section-num">1.4</span> 创建文章 {#创建文章}
+
+```shell
+hugo new posts/first_post.md
+```
+
+这里要注意的是:默认情况下, 所有文章和页面均作为草稿创建. 如果想要渲染这些页面, 请从元数据中删除属性 draft: true, 设置属性 draft: false 或者为 hugo 命令添加 -D/&#x2013;buildDrafts 参数.
+
+
+### <span class="section-num">1.5</span> 启动网站 {#启动网站}
+
+
+#### <span class="section-num">1.5.1</span>  {#}
+
+```shell
+hugo server
+```
+
+这时只可以在本地打开 localhost:1313 访问
+
+
+#### <span class="section-num">1.5.2</span>  {#}
+
+远程打开时要绑定IP,命令为:
+
+```shell
+hugo server --bind 0.0.0.0
+```
+
+这时可以远程输入服务器IP打开网页
+
+
+#### <span class="section-num">1.5.3</span>  {#}
+
+由于本主题使用了 Hugo 中的 .Scratch 来实现一些特性, 非常建议你为 hugo server 命令添加 &#x2013;disableFastRender 参数来实时预览你正在编辑的文章页面.
+
+```shell
+hugo serve --disableFastRender
+```
+
+
+#### <span class="section-num">1.5.4</span>  {#}
+
+hugo serve 的默认运行环境是 development, 而 hugo 的默认运行环境是 production.
+
+由于本地 development 环境的限制, 评论系统, CDN 和 fingerprint 不会在 development 环境下启用.
+
+你可以使用 hugo serve -e production 命令来开启这些特性.
+
+
+#### <span class="section-num">1.5.5</span> 构建网站 {#构建网站}
+
+```shell
+hugo
+```
+
+会生成一个 public 目录, 其中包含你网站的所有静态内容和资源. 现在可以将其部署在任何 Web 服务器上.
+网站内容可以通过 Netlify 自动发布和托管 (了解有关通过 Netlify 进行 HUGO 自动化部署 的更多信息). 或者, 您可以使用 AWS Amplify, Github pages, Render 以及更多…
+
+
+## <span class="section-num">2</span> 配置 {#配置}
+
+
+### <span class="section-num">2.1</span> 头像配置 {#头像配置}
+
+1.  利用gravater,将选择的头像上传后,设置 params.home.profile下的gravatarEmail为你的注册email即可
+2.  将图片放在根目录下的static或assets文件夹,修改 avatarURL内容,其内容是相对于static或assets目录的,比如你有一个Lotus.jpe文件在static文件夹下,设置内容为:avatarURL = "./Lotus.jpg"

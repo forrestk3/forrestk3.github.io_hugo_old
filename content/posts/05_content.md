@@ -1,9 +1,9 @@
-+++
-title = "05_content"
-author = ["Bing Hu"]
-date = 2021-09-01T00:00:00+08:00
-draft = false
-+++
+---
+title: "05_content"
+authors: ["Bing Hu"]
+date: 2021-09-01T00:00:00+08:00
+draft: false
+---
 
 ## <span class="section-num">1</span> 内容组织 {#内容组织}
 
